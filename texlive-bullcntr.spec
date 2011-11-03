@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /macros/latex/contrib/bullcntr
+# catalog-date 2008-08-17 01:00:50 +0200
+# catalog-license lppl
+# catalog-version 0.04
 Name:		texlive-bullcntr
 Version:	0.04
 Release:	1
@@ -51,6 +57,7 @@ latter, it displays the value of a counter lying between 1 and
 #- source
 %doc %{_texmfdistdir}/source/latex/bullcntr/bullcntr.dtx
 %doc %{_texmfdistdir}/source/latex/bullcntr/bullcntr.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -61,3 +68,5 @@ latter, it displays the value of a counter lying between 1 and
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
