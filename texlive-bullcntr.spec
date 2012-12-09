@@ -57,3 +57,18 @@ latter, it displays the value of a counter lying between 1 and
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+
+
+%changelog
+* Tue Jan 03 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.04-2
++ Revision: 749890
+- Rebuild to reduce used resources
+
+* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 0.04-1
++ Revision: 717987
+- texlive-bullcntr
+- texlive-bullcntr
+- texlive-bullcntr
+- texlive-bullcntr
+- texlive-bullcntr
+
