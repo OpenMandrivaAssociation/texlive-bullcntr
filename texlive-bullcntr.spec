@@ -6,7 +6,7 @@
 # catalog-version 0.04
 Name:		texlive-bullcntr
 Version:	0.04
-Release:	10
+Release:	11
 Summary:	Display list item counter as regular pattern of bullets
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/bullcntr
