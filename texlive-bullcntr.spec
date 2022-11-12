@@ -1,19 +1,13 @@
-# revision 15878
-# category Package
-# catalog-ctan /macros/latex/contrib/bullcntr
-# catalog-date 2008-08-17 01:00:50 +0200
-# catalog-license lppl
-# catalog-version 0.04
 Name:		texlive-bullcntr
-Version:	0.04
-Release:	11
+Version:	15878
+Release:	1
 Summary:	Display list item counter as regular pattern of bullets
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/bullcntr
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.r15878.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.doc.r15878.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.source.r15878.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -26,12 +20,12 @@ latter, it displays the value of a counter lying between 1 and
 9, but uses, for the purpose, a regular pattern of bullets.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -50,25 +44,11 @@ latter, it displays the value of a counter lying between 1 and
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Tue Jan 03 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.04-2
-+ Revision: 749890
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 0.04-1
-+ Revision: 717987
-- texlive-bullcntr
-- texlive-bullcntr
-- texlive-bullcntr
-- texlive-bullcntr
-- texlive-bullcntr
-
