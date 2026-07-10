@@ -1,54 +1,26 @@
-Name:		texlive-bullcntr
-Version:	15878
-Release:	2
+%global tl_name bullcntr
+%global tl_revision 15878
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.04
+Release:	%{tl_revision}.1
 Summary:	Display list item counter as regular pattern of bullets
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/bullcntr
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.source.r%{version}.tar.xz
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/bullcntr.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The bullcntr package defines the command bullcntr, which can be
-thought of as an analogue of the \fnsymbol command: like the
-latter, it displays the value of a counter lying between 1 and
-9, but uses, for the purpose, a regular pattern of bullets.
+The bullcntr package defines the command bullcntr, which may be thought
+of as an analogue of the \fnsymbol command: like the latter, it displays
+the value of a counter lying between 1 and 9, but uses, for the purpose,
+a regular pattern of bullets.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/bullcntr/bullcntr.sty
-%{_texmfdistdir}/tex/latex/bullcntr/bullenum.sty
-%doc %{_texmfdistdir}/doc/latex/bullcntr/00readme.txt
-%doc %{_texmfdistdir}/doc/latex/bullcntr/README
-%doc %{_texmfdistdir}/doc/latex/bullcntr/bullcntr-man.pdf
-%doc %{_texmfdistdir}/doc/latex/bullcntr/bullcntr-man.tex
-%doc %{_texmfdistdir}/doc/latex/bullcntr/bullcntr-sam.tex
-%doc %{_texmfdistdir}/doc/latex/bullcntr/bullenum-sam.tex
-%doc %{_texmfdistdir}/doc/latex/bullcntr/manifest.txt
-#- source
-%doc %{_texmfdistdir}/source/latex/bullcntr/bullcntr.dtx
-%doc %{_texmfdistdir}/source/latex/bullcntr/bullcntr.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
